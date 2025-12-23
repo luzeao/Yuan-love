@@ -19,9 +19,9 @@ const snowflakeCount = 150;
 const createSnowflake = (canvas: HTMLCanvasElement): Snowflake => ({
   x: Math.random() * canvas.width,
   y: Math.random() * canvas.height,
-  radius: Math.random() * 3 + 1,
+  radius: Math.random() * 3 + 1.5, // Slightly larger base
   speed: Math.random() * 1 + 0.5,
-  opacity: Math.random() * 0.5 + 0.3,
+  opacity: Math.random() * 0.4 + 0.6, // Min opacity 0.6, max 1.0 for brightness
   drift: Math.random() * 1 - 0.5,
 });
 
@@ -31,8 +31,16 @@ const drawSnowflakes = (ctx: CanvasRenderingContext2D, canvas: HTMLCanvasElement
   snowflakes.forEach((flake) => {
     ctx.beginPath();
     ctx.arc(flake.x, flake.y, flake.radius, 0, Math.PI * 2);
+    
+    // Add glow effect
+    ctx.shadowBlur = 5;
+    ctx.shadowColor = "rgba(255, 255, 255, 0.8)";
+    
     ctx.fillStyle = `rgba(255, 255, 255, ${flake.opacity})`;
     ctx.fill();
+    
+    // Reset shadow for performance if needed, but keeping it per flake is okay for small count
+    ctx.shadowBlur = 0;
     
     // Update position
     flake.y += flake.speed;
