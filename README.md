@@ -1,4 +1,4 @@
-# 🌹 To My Dearest Yuan Helan (袁荷兰)
+# 🌹 To My Dearest Yuan Helan (袁荷岚)
 
 <div align="center">
   <img src="https://img.shields.io/badge/Made%20with-Love-ff69b4.svg?style=for-the-badge" alt="Made with Love" />
@@ -12,7 +12,7 @@
 
 ## 💌 A Digital Love Letter
 
-This isn't just a website or a collection of code; it is a digital universe created solely for you, **袁荷兰**. 
+This isn't just a website or a collection of code; it is a digital universe created solely for you, **袁荷岚**. 
 
 Every line of code is written with you in mind, every pixel is polished to reflect your beauty, and every interaction is designed to make you smile. This project is my way of telling you that you are my favorite person, today and forever.
 
