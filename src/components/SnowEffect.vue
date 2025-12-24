@@ -1,22 +1,13 @@
-<script setup lang="ts">
+<script setup>
 import { onMounted, onUnmounted, ref } from 'vue';
 
-const canvasRef = ref<HTMLCanvasElement | null>(null);
-let animationFrameId: number;
+const canvasRef = ref(null);
+let animationFrameId;
 
-interface Snowflake {
-  x: number;
-  y: number;
-  radius: number;
-  speed: number;
-  opacity: number;
-  drift: number;
-}
-
-const snowflakes: Snowflake[] = [];
+const snowflakes = [];
 const snowflakeCount = 150;
 
-const createSnowflake = (canvas: HTMLCanvasElement): Snowflake => ({
+const createSnowflake = (canvas) => ({
   x: Math.random() * canvas.width,
   y: Math.random() * canvas.height,
   radius: Math.random() * 3 + 1.5, // Slightly larger base
@@ -25,7 +16,7 @@ const createSnowflake = (canvas: HTMLCanvasElement): Snowflake => ({
   drift: Math.random() * 1 - 0.5,
 });
 
-const drawSnowflakes = (ctx: CanvasRenderingContext2D, canvas: HTMLCanvasElement) => {
+const drawSnowflakes = (ctx, canvas) => {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   
   snowflakes.forEach((flake) => {
@@ -59,7 +50,7 @@ const drawSnowflakes = (ctx: CanvasRenderingContext2D, canvas: HTMLCanvasElement
   });
 };
 
-const animate = (ctx: CanvasRenderingContext2D, canvas: HTMLCanvasElement) => {
+const animate = (ctx, canvas) => {
   drawSnowflakes(ctx, canvas);
   animationFrameId = requestAnimationFrame(() => animate(ctx, canvas));
 };

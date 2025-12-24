@@ -1,7 +1,9 @@
-<script setup lang="ts">
+<script setup>
 import { onMounted } from 'vue';
 import { useTheme } from './composables/useTheme';
 import MusicPlayer from './components/MusicPlayer.vue';
+import ClickHearts from './components/ClickHearts.vue';
+import GameCenter from './components/GameCenter.vue';
 
 const { initTheme } = useTheme();
 
@@ -13,6 +15,8 @@ onMounted(() => {
 <template>
   <div class="min-h-screen bg-bg text-text selection:bg-primary selection:text-bg transition-colors duration-700 relative">
     <MusicPlayer />
+    <ClickHearts />
+    <GameCenter />
     
      <!-- Background Grid Effect -->
     <div class="fixed inset-0 pointer-events-none z-0 opacity-10"

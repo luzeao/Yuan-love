@@ -1,11 +1,11 @@
-<script setup lang="ts">
-import { ref, onMounted } from 'vue';
+<script setup>
+import { ref } from 'vue';
 import gsap from 'gsap';
 
-const btnRef = ref<HTMLElement | null>(null);
-const textRef = ref<HTMLElement | null>(null);
+const btnRef = ref(null);
+const textRef = ref(null);
 
-const handleMouseMove = (e: MouseEvent) => {
+const handleMouseMove = (e) => {
   if (!btnRef.value) return;
 
   const rect = btnRef.value.getBoundingClientRect();

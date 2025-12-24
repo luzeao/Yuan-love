@@ -1,8 +1,8 @@
-<script setup lang="ts">
+<script setup>
 import { ref, onMounted } from 'vue';
 import musicFile from '@/assets/M800001auUcH4WQs2V.mp3';
 
-const audioRef = ref<HTMLAudioElement | null>(null);
+const audioRef = ref(null);
 const isPlaying = ref(false);
 const isUserInteracted = ref(false);
 

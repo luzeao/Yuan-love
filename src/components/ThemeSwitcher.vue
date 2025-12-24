@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup>
 import { useTheme } from '../composables/useTheme';
 
 const { themes, currentTheme, setTheme } = useTheme();

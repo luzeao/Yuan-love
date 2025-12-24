@@ -1,20 +1,6 @@
 import { ref } from 'vue';
 
-export interface ThemeColors {
-  primary: string; // "R G B"
-  bg: string;      // "R G B"
-  surface: string; // "R G B"
-  text: string;    // "R G B"
-  accent: string;  // "R G B"
-}
-
-export interface Theme {
-  id: string;
-  name: string;
-  colors: ThemeColors;
-}
-
-const themes: Theme[] = [
+const themes = [
   {
     id: 'romantic',
     name: 'Eternal Love',
@@ -37,13 +23,45 @@ const themes: Theme[] = [
       accent: '255 0 255',  // Magenta
     },
   },
-  // ... keep others if needed, but let's focus on these for now
+  {
+    id: 'midnight',
+    name: 'Midnight Dream',
+    colors: {
+      primary: '100 149 237', // Cornflower Blue
+      bg: '10 10 30',         // Deep Blue
+      surface: '20 20 50',    // Dark Blue Surface
+      text: '230 230 250',    // Lavender
+      accent: '255 215 0',    // Gold
+    },
+  },
+  {
+    id: 'sunset',
+    name: 'Sunset Promise',
+    colors: {
+      primary: '255 160 122', // Light Salmon
+      bg: '30 15 10',         // Deep Brown/Red
+      surface: '60 30 20',    // Dark Orange/Brown
+      text: '255 235 205',    // Blanched Almond
+      accent: '255 69 0',     // Red Orange
+    },
+  },
+  {
+    id: 'forest',
+    name: 'Forest Whisper',
+    colors: {
+      primary: '144 238 144', // Light Green
+      bg: '5 20 10',          // Deep Green
+      surface: '20 40 25',    // Dark Green Surface
+      text: '240 255 240',    // Honeydew
+      accent: '50 205 50',    // Lime Green
+    },
+  },
 ];
 
-const currentTheme = ref<Theme>(themes[0]);
+const currentTheme = ref(themes[0]);
 
 export function useTheme() {
-  const setTheme = (themeId: string) => {
+  const setTheme = (themeId) => {
     const theme = themes.find((t) => t.id === themeId);
     if (!theme) return;
 

@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup>
 import { onMounted, ref } from 'vue';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -15,8 +15,30 @@ const photoList = Object.values(images);
 
 gsap.registerPlugin(ScrollTrigger);
 
-const titleRef = ref<HTMLElement | null>(null);
-const subtitleRef = ref<HTMLElement | null>(null);
+const titleRef = ref(null);
+const subtitleRef = ref(null);
+
+const handleHeroMouseMove = (e) => {
+  const { clientX, clientY, currentTarget } = e;
+  const { width, height } = currentTarget.getBoundingClientRect();
+  
+  const x = (clientX / width) - 0.5;
+  const y = (clientY / height) - 0.5;
+  
+  gsap.to(titleRef.value, {
+    x: x * 50,
+    y: y * 50,
+    duration: 1,
+    ease: 'power2.out'
+  });
+  
+  gsap.to(subtitleRef.value, {
+    x: x * 30,
+    y: y * 30,
+    duration: 1,
+    ease: 'power2.out'
+  });
+};
 
 onMounted(() => {
   // Intro Text Animation
@@ -37,7 +59,7 @@ onMounted(() => {
 
   // Parallax & Fade for Photos
   const photos = gsap.utils.toArray('.photo-item');
-  photos.forEach((photo: any, i) => {
+  photos.forEach((photo, i) => {
     gsap.from(photo, {
       scrollTrigger: {
         trigger: photo,
@@ -73,7 +95,10 @@ onMounted(() => {
     <ThemeSwitcher />
 
     <!-- Hero Section with Video Background -->
-    <section class="h-screen h-[100dvh] relative flex flex-col justify-center items-center overflow-hidden supports-[height:100dvh]:h-[100dvh]">
+    <section 
+      class="h-screen h-[100dvh] relative flex flex-col justify-center items-center overflow-hidden supports-[height:100dvh]:h-[100dvh]"
+      @mousemove="handleHeroMouseMove"
+    >
       <video 
         class="absolute inset-0 w-full h-full object-cover opacity-60 filter brightness-75"
         autoplay 
